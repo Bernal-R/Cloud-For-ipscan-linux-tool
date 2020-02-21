@@ -1,0 +1,104 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  labels:
+    app: postgresql-db
+spec:
+  ports:
+    - port: 5432
+      targetPort: 5432
+      name: db
+  selector:
+    app: postgresql-db
+  clusterIP: None
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: db
+  labels:
+    app: postgresql-db
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: postgresql-db
+    spec:
+      containers:
+      - name: db
+        image: postgresql-database:10.0
+        ports:
+        - containerPort: 5432
+          name: db
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: words
+  labels:
+    app: rest-api
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      name: api-port
+  selector:
+    app: rest-api
+  clusterIP: None
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: words
+  labels:
+    app: rest-api
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rest-api
+    spec:
+      containers:
+      - name: words
+        image: api-gateway:v1
+        ports:
+        - containerPort: 8080
+          name: api-port
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  labels:
+    app: web-ui
+spec:
+  ports:
+    - port: 8081
+      targetPort: 80
+      name: web
+  selector:
+    app: web-ui
+  type: LoadBalancer
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    app: web-ui
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web-ui
+    spec:
+      containers:
+      - name: web
+        image: api-gateway:v1
+        ports:
+        - containerPort: 80
+          name: web-ui
