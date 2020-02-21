@@ -42,7 +42,7 @@
   padding: 16px;
   text-align: center;
   height: 10%;
-  width: 25%;
+  width: 50%;
 }
 
 .categories {
@@ -65,4 +65,48 @@
   text-align: center;
   height: 70%;
   width: 100%;
+}
+
+
+
+.circle {
+  height: 50px;
+  width: 50px;
+  background-color: rgba(51, 189, 17, 0.671);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.342);
+  border-radius: 50%;
+  margin-left: 30%;
+}
+
+
+.column_mini {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row_mini {
+  margin: 0 -5px;
+}
+
+/* Clear floats after the column_minis */
+.row_mini:after {
+  content: "";
+  display: table;
+  clear: both;
+  margin-bottom: 10%;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: transparent;
+  height: 35%;
+}
+
+.category_name {
+  margin-bottom: 35%;
 }

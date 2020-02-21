@@ -6,10 +6,23 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
     <link rel="stylesheet" href="css/main.css" />
+
+
+    <link href="js/vendors/jqvmap-master/dist/jqvmap.css" media="screen" rel="stylesheet" type="text/css"/>
+
+
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/vendors/jqvmap-master/dist/jquery.vmap.js"></script>
+    <script type="text/javascript" src="js/vendors/jqvmap-master/dist/maps/jquery.vmap.world.js" charset="utf-8"></script>
+
+    <script src="js/jquery.vmap.electioncolors.js"></script>
+    <script src="js/jquery.vmap.sampledata.js"></script>
+
   </head>
 
   <body>
-
+    
     <div class="row">
       <div class="column">
         <div class="score">
@@ -29,13 +42,80 @@
     <div class="row">
       <div class="column">
         <div class="categories">
-          <h3>Cagories</h3>
+          <h3>Category of thread</h3>
+
+          <div class="row_mini">
+            <div class="column_mini">
+              <div class="card">
+                <p class="category_name">Bots</p> 
+                <div class="circle"></div>
+              </div>
+            </div>
+          
+            <div class="column_mini">
+              <div class="card">
+                <p class="category_name">Crypto Mining</p> 
+                <div class="circle"></div>
+              </div>
+            </div>
+            
+            <div class="column_mini">
+              <div class="card">
+                <p class="category_name">Ip Scan</p> 
+                <div class="circle"></div>
+              </div>
+            </div>
+            
+            <div class="column_mini">
+              <div class="card">
+                <p class="category_name">Dynamic IP</p> 
+                <div class="circle"></div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="row_mini">
+            <div class="column_mini">
+              <div class="card">
+                <p class="category_name">Malware</p> 
+                <div class="circle"></div>
+              </div>
+            </div>
+          
+            <div class="column_mini">
+              <div class="card">
+                <p class="category_name">Anonymization</p> 
+                <div class="circle"></div>
+              </div>
+            </div>
+            
+            <div class="column_mini">
+              <div class="card">
+                <p style="margin-bottom: 5;">Botnets Command Center</p> 
+                <div class="circle"></div>
+              </div>
+            </div>
+            
+            <div class="column_mini">
+              <div class="card">
+                <p class="category_name">Spam</p> 
+                <div class="circle"></div>
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </div>
 
       <div class="column">
         <div class="map">
-          <h3>Map</h3>
+          <h3>Server Location</h3>
+          <div>
+            <div id="vmap" style="width: 600px; height: 400px;"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -44,6 +124,7 @@
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
+
   </body>
 
 
