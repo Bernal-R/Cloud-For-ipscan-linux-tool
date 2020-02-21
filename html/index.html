@@ -1,25 +1,51 @@
 <html>
   <head>
     <title>UI for ipscan</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+    <link rel="stylesheet" href="css/main.css" />
   </head>
-  <body>
-    <div align="center">
 
-    <h1>Hello World!</h1>
-    <button onclick="request()">Test request</button>
+  <body>
+
+    <div class="row">
+      <div class="column">
+        <div class="score">
+          <h3>10</h3>
+          <p>CSSV Score</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="ip">
+          <h3>10.10.10.10</h3>
+        </div>
+      </div>
     </div>
 
-    <script>
-      function request() {
-      fetch('http://localhost:8081/api/v1/analysis_metric/123')
-        .then(function(response) {
-          return response.json();
-        })
-        .then(function(myJson) {
-        console.log(myJson);
-        });
-      }
-    </script>
 
+    <div class="row">
+      <div class="column">
+        <div class="categories">
+          <h3>Cagories</h3>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="map">
+          <h3>Map</h3>
+        </div>
+      </div>
+    </div>
+
+    <button onclick="request()">Test request</button>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
   </body>
+
+
+  
 </html>
