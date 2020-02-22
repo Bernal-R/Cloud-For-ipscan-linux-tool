@@ -15,10 +15,10 @@ jQuery(document).ready(function () {
     backgroundColor: 'transparent',
     color: '#C8EEFF',
     hoverOpacity: 0.7,
-    selectedColor: '#666666',
+    selectedColor: '#C8EEFF',
     enableZoom: true,
     showTooltip: true,
-    scaleColors: ['#C8EEFF', '#006491'],
+    scaleColors: ['#C8EEFF', '#bd1111'],
     values: sample_data,
     normalizeFunction: 'polynomial'
   });
