@@ -13,9 +13,9 @@ async def submit_ip_analysis_metric(metrics: CreateAnalysisMetric):
         "status": "saved"
     }
 
-@router.get('/analysis_metric/{ip}', tags=['IP ANALYSIS'], response_model=Dict)
-async def get_ip_analysis_metric(ip: str):
-    result = db_operations.get_data(ip)
+@router.get('/analysis_metric/last', tags=['IP ANALYSIS'], response_model=Dict)
+async def get_ip_analysis_metric():
+    result = db_operations.get_data()
     return {
         "ip": result[0][0],
         "score": result[0][1],

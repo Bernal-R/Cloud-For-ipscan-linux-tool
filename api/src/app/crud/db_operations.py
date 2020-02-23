@@ -43,17 +43,17 @@ def insert_data(metrics):
 # -----------------------------------------------------------------------------
 # READ DATA OPERATION
 # -----------------------------------------------------------------------------
-def get_data(ip):
-    #TODO: This code is vulnerable to SQL Injection
-    query = 'SELECT Analysis.ip, Analysis.score, Analysis.country, Categories.bots, Categories.crypto_mining, Categories.ip_scan, Categories.ip_dynamic, Categories.malware, Categories.anonymization, Categories.botnets_command_center, Categories.spam \
+def get_data():
+    query= "SELECT Analysis.ip, Analysis.score, Analysis.country, Categories.bots, Categories.crypto_mining, Categories.ip_scan, Categories.ip_dynamic, Categories.malware, Categories.anonymization, Categories.botnets_command_center, Categories.spam \
             FROM Analysis \
             LEFT JOIN Categories \
-            ON Categories.id_categories=Analysis.id_categories \
-            WHERE Analysis.ip = %s;'
+            ON Categories.id_categories=Analysis.id_categories\
+            ORDER BY Analysis.ip DESC\
+            LIMIT 1;"
 
     connection = open_connection()
     cursor = connection.cursor()
-    cursor.execute(query, (ip,))
+    cursor.execute(query)
     result = cursor.fetchall()
     connection.commit()
     close_connection(connection, cursor)
