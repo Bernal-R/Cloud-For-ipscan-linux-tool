@@ -1,5 +1,5 @@
 function request() {
-    fetch('http://localhost:8081/api/v1/analysis_metric/123')
+    fetch('http://localhost:8081/api/v1/analysis_metric/last')
       .then(function(response) {
         return response.json();
       })
