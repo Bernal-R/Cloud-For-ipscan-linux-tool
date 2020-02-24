@@ -15,9 +15,52 @@ The Cloud contains 3 parts:
 Each part run in a independently container.
 
 ### Cloud Architecture 
+Each purple circle in diagram is a separatly container
 <kbd><img src="imgs/architecture_simple.png" /></kbd>
 
 ### API
+#### **POST**
+The POST URL is: `/api/v1/analysis_metric`
+
+Expect a schema like:
+```
+{
+  "ip": "string",
+  "score": 0,
+  "country": "string",
+  "tags": {
+    "host_name": "string",
+    "time": "string"
+  },
+  "categories": {
+    "bots": false,
+    "crypto_mining": false,
+    "ip_scan": false,
+    "ip_dynamic": false,
+    "malware": false,
+    "anonymization": false,
+    "command_center_botnets": false,
+    "spam": false
+  }
+}
+```
+
+Call the function  `submit_ip_analysis_metric()` that storage data on Postgresql database
+
+#### **GET**
+The GET URL is: `/api/v1/analysis_metric/last`
+
+Do not expect a schema.
+
+Call the function  `get_ip_analysis_metric()` that request the last IP stored in the database and its respective information
+
+
+#### **Response codes**
+CODE | Description 
+--- | --- 
+200 | Successful Response
+422 | Validation Error
+500 | Internal Server Error
 
 ### DB
 Uses [Dockerhub Postgresql image](https://hub.docker.com/_/postgres)
