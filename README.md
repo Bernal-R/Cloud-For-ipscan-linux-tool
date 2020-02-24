@@ -15,11 +15,17 @@ The Cloud contains 3 parts:
 Each part run in a independently container.
 
 ### Cloud Architecture 
-Each purple circle in diagram is a separatly container
+#### Simple architecture
+For understand what happen, shows the simple diagram.
+
 <kbd><img src="imgs/architecture_simple.png" /></kbd>
+(Each purple circle in diagram is a separatly container)
+
+#### Real architecture
+This project uses kubernetes to create 2 replicas of each component and obtain redundancy, with their respective load balancer
 
 ### API
-#### **POST**
+#### POST
 The POST URL is: `/api/v1/analysis_metric`
 
 Expect a schema like:
@@ -47,7 +53,7 @@ Expect a schema like:
 
 Call the function  `submit_ip_analysis_metric()` that storage data on Postgresql database
 
-#### **GET**
+#### GET
 The GET URL is: `/api/v1/analysis_metric/last`
 
 Do not expect a schema.
