@@ -19,6 +19,12 @@ Each part run in a independently container.
 ### API
 
 ### DB
+Uses [Dockerhub Postgresql image](https://hub.docker.com/_/postgres)
+Copy script.sql (Create database) on the new container.
+
+Database diagram:
+<kbd><img src="imgs/db_diagram.png" /></kbd>
+
 
 ### GUI
 The GUI do a GET to our API at http://localhost:8081/api/v1/analysis_metric/last each second. Expects a JSON that contains the last ip storage in a data base
@@ -27,7 +33,7 @@ The GUI shows 4 principles elements
 * IP analized
 * CVSS Score
 * Map with server location
-* Categories og threats
+* Categories of threats
     * **Bots:** Botnet member activity
     * **Cryto Mining:** Used for cryptocurrency mining
     * **Ip Scan:** Illegally scan networks looking for vulnerabilities
@@ -70,7 +76,7 @@ This file have 4 parts:
 
 
 ## Usage
-For setup you onle need follow 2 steps:
+For setup you only need follow 2 steps:
 
 ### 1. Clone repo
 ```
@@ -96,26 +102,26 @@ The deployment file have 2 parts:
 
 1) Compile the docker images for each service:
 
-* Go to api folder and execute build-api.sh
+* Build API docker image
 ```
 $ cd api/
 $ sh build-api.sh
 $ cd ../
 ```
-* Go to db folder and execute build-db.sh
+* Build Postgresql docker image
 ```
 $ cd db/
 $ sh build-db.sh
 $ cd ../
 ```
-* Go to html folder and execute build-ui.sh
+* Build Web UI docker image
 ```
 $ cd html/
 $ sh build-ui.sh
 $ cd ../
 ```
 
-2) Execute .yaml file on kubernetes 
+2) Execute .yml file on kubernetes 
 ```
 $ kubectl apply -f kube-deployment.yml
 ```
