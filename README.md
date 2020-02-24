@@ -15,6 +15,7 @@ The Cloud contains 3 parts:
 Each part run in a independently container.
 
 ### Cloud Architecture 
+<kbd><img src="imgs/architecture_simple.png" /></kbd>
 
 ### API
 
