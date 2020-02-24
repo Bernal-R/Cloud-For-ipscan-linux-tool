@@ -85,7 +85,7 @@ $ sh deploy.sh
 ```
 
 Now you can find two services exposed:
-1) **API GUI:** You cand find it in your browser: http://localhost:8081/api/docs#/
+1) **API GUI:** You cand find it in your browser: http://localhost:8081/api/docs/
     * You would see the API Rest interface and you can interact with it.
 2) **GUI:** You can find it in your browrser: http://localhost:31000/
     * Updates real time each new ip storage in db
@@ -120,7 +120,40 @@ $ cd ../
 $ kubectl apply -f kube-deployment.yml
 ```
 
-#### Chek all is working good
+#### Check all is working good
 ```
 $ kubectl get all
+```
+The output should be similar to:
+```
+NAME                           READY   STATUS    RESTARTS   AGE
+pod/api-rest-c65bc7548-f7snk   1/1     Running   0          35m
+pod/api-rest-c65bc7548-pdf7c   1/1     Running   0          35m
+pod/db-5b87c9dc68-5rspx        1/1     Running   0          35m
+pod/db-5b87c9dc68-tqlhw        1/1     Running   0          35m
+pod/ui-api-6d8f88f4c7-6d696    1/1     Running   0          35m
+pod/ui-api-6d8f88f4c7-kdkp6    1/1     Running   0          35m
+pod/ui-web-7684fff854-6l8ng    1/1     Running   0          35m
+pod/ui-web-7684fff854-crc7b    1/1     Running   0          35m
+
+
+NAME                 TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+service/api-rest     ClusterIP      None             <none>        7676/TCP         35m
+service/db           ClusterIP      None             <none>        5432/TCP         35m
+service/kubernetes   ClusterIP      10.96.0.1        <none>        443/TCP          64m
+service/ui-api       LoadBalancer   10.110.155.155   localhost     8081:31465/TCP   35m
+service/web-ui-svc   NodePort       10.110.181.210   <none>        80:31000/TCP     35m
+
+
+NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/api-rest   2/2     2            2           35m
+deployment.apps/db         2/2     2            2           35m
+deployment.apps/ui-api     2/2     2            2           35m
+deployment.apps/ui-web     2/2     2            2           35m
+
+NAME                                 DESIRED   CURRENT   READY   AGE
+replicaset.apps/api-rest-c65bc7548   2         2         2       35m
+replicaset.apps/db-5b87c9dc68        2         2         2       35m
+replicaset.apps/ui-api-6d8f88f4c7    2         2         2       35m
+replicaset.apps/ui-web-7684fff854    2         2         2       35m
 ```
