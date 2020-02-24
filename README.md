@@ -20,7 +20,8 @@ Each part run in a independently container.
 
 ### DB
 Uses [Dockerhub Postgresql image](https://hub.docker.com/_/postgres)
-Copy script.sql (Create database) on the new container.
+
+In dockerfile you should see `COPY script.sql /docker-entrypoint-initdb.d/` this line copy script.sql (Create database) on the new container.
 
 Database diagram:
 <kbd><img src="imgs/db_diagram.png" /></kbd>
